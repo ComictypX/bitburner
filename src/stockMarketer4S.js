@@ -17,7 +17,7 @@ function getMoney(ns) {
 
 function sellShorts(ns, stockSymbol) {
   const stockInfo = getStockInfo(ns, stockSymbol)
-  const shortSellValue = ns.sellShort(stockSymbol, stockInfo.sharesShort)
+  const shortSellValue = ns.stock.sellShort(stockSymbol, stockInfo.sharesShort)
 
   if (shortSellValue) {
     corpus += stockInfo.sharesShort * (stockInfo.avgPriceShort - shortSellValue) - 2 * commission
@@ -32,7 +32,7 @@ function sellShorts(ns, stockSymbol) {
 
 function sellLongs(ns, stockSymbol) {
   const stockInfo = getStockInfo(ns, stockSymbol)
-  const longSellValue = ns.sellStock(stockSymbol, stockInfo.sharesLong)
+  const longSellValue = ns.stock.sell(stockSymbol, stockInfo.sharesLong)
 
   if (longSellValue) {
     corpus += stockInfo.sharesLong * (longSellValue - stockInfo.avgPriceLong) - 2 * commission
